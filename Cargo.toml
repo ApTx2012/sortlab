@@ -5,6 +5,7 @@ edition = "2024"
 license = "MIT"
 readme = "README.md"
 description = "An experimental, extensible Rust library of sorting algorithms with a unified API."
+repository = "https://github.com/ApTx2012/sortlab"
 categories = ["algorithms"]
 keywords = ["sorting", "algorithm", "sorter", "iterator"]
 
