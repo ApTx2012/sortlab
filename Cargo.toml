@@ -1,0 +1,19 @@
+[package]
+name = "sortlab"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+readme = "README.md"
+description = "An experimental, extensible Rust library of sorting algorithms with a unified API."
+categories = ["algorithms"]
+keywords = ["sorting", "algorithm", "sorter", "iterator"]
+
+[features]
+default = ["alloc"]
+# Parallel sorting support (rayon-based, not yet wired up).
+parallel = ["alloc"]
+# Enables algorithms that need dynamic allocation (merge sort scratch buffer).
+alloc = []
+
+[dependencies]
+# no deps for now

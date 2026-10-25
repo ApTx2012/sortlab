@@ -1,0 +1,16 @@
+# Rust build artifacts
+/target
+**/*.rs.bk
+
+# Cargo lock file (libraries typically do not commit it)
+Cargo.lock
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
