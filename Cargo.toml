@@ -11,10 +11,17 @@ keywords = ["sorting", "algorithm", "sorter", "iterator"]
 
 [features]
 default = ["alloc"]
-# Parallel sorting support (rayon-based, not yet wired up).
+# Parallel sorting support (std::thread based).
 parallel = ["alloc"]
 # Enables algorithms that need dynamic allocation (merge sort scratch buffer).
 alloc = []
 
 [dependencies]
 # no deps for now
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "sorting"
+harness = false
