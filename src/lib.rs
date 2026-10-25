@@ -17,12 +17,7 @@ mod tests {
 
     #[test]
     fn sorters_sort_slices() {
-        for mut data in [
-            vec![5, 2, 8, 1, 9, 3],
-            vec![1, 2, 3],
-            vec![],
-            vec![1],
-        ] {
+        for mut data in [vec![5, 2, 8, 1, 9, 3], vec![1, 2, 3], vec![], vec![1]] {
             let len = data.len();
             Bubble.sort(&mut data);
             assert!(utils::is_sorted(&data));
@@ -70,7 +65,8 @@ mod tests {
         }
 
         let mut rng = Rng(0x9E3779B97F4A7C15);
-        let sorters: [(&str, fn(&mut [i32])); 4] = [
+        type SortFn = fn(&mut [i32]);
+        let sorters: [(&str, SortFn); 4] = [
             ("bubble", |d| {
                 Bubble.sort(d);
             }),
@@ -89,17 +85,14 @@ mod tests {
             for len in [0usize, 1, 2, 3, 4, 5, 10, 31, 100, 500] {
                 for rep in 0..20 {
                     // Choose a value range that shrinks with rep to force many duplicates.
-                    let range = (rep as i32 + 1) * 3;
+                    let range = (rep + 1) * 3;
                     let mut data: Vec<i32> = (0..len)
                         .map(|_| (rng.next() % range as u64) as i32)
                         .collect();
                     let mut expected = data.clone();
                     expected.sort();
                     sort_with(&mut data);
-                    assert_eq!(
-                        data, expected,
-                        "{name} failed: len={len}, rep={rep}"
-                    );
+                    assert_eq!(data, expected, "{name} failed: len={len}, rep={rep}");
                 }
             }
         }
